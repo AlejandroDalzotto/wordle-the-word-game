@@ -5,21 +5,7 @@ import type { Word } from './types';
 
 export const getWord = async () => {
 
-  const filePath = join(process.cwd(), "src", "app", "words.json")
-
-  const productionPath = process.cwd()
-  readdir(productionPath, { withFileTypes: true, recursive: true }, (err, dirents) => {
-
-    if (err) {
-      console.log({ errInformation: err })
-
-    }
-
-    const files = dirents.map(dirent => dirent.name )
-
-    console.log({ files })
-
-  })
+  const filePath = join(process.cwd(), "app", "words.json")
 
   const file = await fs.readFile(filePath, 'utf8');
   const words: Set<string> = new Set(JSON.parse(file));
@@ -35,7 +21,7 @@ export const getWord = async () => {
 }
 
 export const isValidWord = async (word: string) => {
-  const filePath = join(process.cwd(), "src", "app", "words.json")
+  const filePath = join(process.cwd(), "app", "words.json")
 
   const file = await fs.readFile(filePath, 'utf8');
   const words: Set<string> = new Set(JSON.parse(file));
