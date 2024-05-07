@@ -4,7 +4,7 @@ import type { Word } from './types';
 
 export const getWord = async () => {
 
-  const file = await fs.readFile(process.cwd() + '/src/data/words.json', 'utf8');
+  const file = await fs.readFile(process.cwd() + '/src/app/words.json', 'utf8');
   const words: Set<string> = new Set(JSON.parse(file));
 
   const randIndex = Math.floor(Math.random() * words.size);
@@ -18,14 +18,14 @@ export const getWord = async () => {
 }
 
 export const isValidWord = async (word: string) => {
-  const file = await fs.readFile(process.cwd() + '/src/data/words.json', 'utf8');
+  const file = await fs.readFile(process.cwd() + '/src/app/words.json', 'utf8');
   const words: Set<string> = new Set(JSON.parse(file));
 
   return words.has(word);
 }
 
 export const getTotalWords = async () => {
-  const file = await fs.readFile(process.cwd() + '/src/data/words.json', 'utf8');
+  const file = await fs.readFile(process.cwd() + '/src/app/words.json', 'utf8');
   const words = new Set(JSON.parse(file));
 
   return words.size;
