@@ -1,5 +1,5 @@
 "use server";
-import { promises as fs, readdir } from 'fs';
+import { promises as fs } from 'fs';
 import { join } from 'path';
 import type { Word } from './types';
 
