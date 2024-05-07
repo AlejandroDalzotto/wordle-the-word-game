@@ -6,11 +6,13 @@ import type { Word } from './types';
 export const getWord = async () => {
 
   const filePath = join(process.cwd(), "src", "app", "words.json")
-  readdir(filePath, { withFileTypes: true }, (err, files) => {
+
+  const productionPath = process.cwd()
+  readdir(productionPath, { withFileTypes: true, recursive: true }, (err, files) => {
 
     if (err) {
       console.log({ errInformation: err })
-      
+
     }
 
     console.log({ files })
