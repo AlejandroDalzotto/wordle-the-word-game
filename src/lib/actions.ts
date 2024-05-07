@@ -1,11 +1,12 @@
 "use server";
-import { promises as fs } from 'fs';
+import { promises as fs, existsSync } from 'fs';
 import { join } from 'path';
 import type { Word } from './types';
 
 export const getWord = async () => {
 
   const filePath = join(process.cwd(), "src", "app", "words.json")
+  console.log({ filePath, exist: existsSync(filePath) })
 
   const file = await fs.readFile(filePath, 'utf8');
   const words: Set<string> = new Set(JSON.parse(file));
@@ -22,18 +23,10 @@ export const getWord = async () => {
 
 export const isValidWord = async (word: string) => {
   const filePath = join(process.cwd(), "src", "app", "words.json")
+  console.log({ filePath, exist: existsSync(filePath) })
 
   const file = await fs.readFile(filePath, 'utf8');
   const words: Set<string> = new Set(JSON.parse(file));
 
   return words.has(word);
-}
-
-export const getTotalWords = async () => {
-  const filePath = join(process.cwd(), "src", "app", "words.json")
-
-  const file = await fs.readFile(filePath, 'utf8');
-  const words = new Set(JSON.parse(file));
-
-  return words.size;
 }
