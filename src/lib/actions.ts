@@ -8,7 +8,10 @@ export const getWord = async () => {
   const filePath = join(process.cwd(), "src", "app", "words.json")
   readdir(filePath, { withFileTypes: true }, (err, files) => {
 
-    if (err) return;
+    if (err) {
+      console.log({ errInformation: err })
+      
+    }
 
     console.log({ files })
 
