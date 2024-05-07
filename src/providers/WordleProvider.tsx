@@ -1,6 +1,6 @@
 "use client";
 
-import { isValidWord } from "@/lib/actions";
+import { isValidWord, seeCwd } from "@/lib/actions";
 import { compareWords, isValidKey } from "@/lib/utils";
 import { useWordleStore } from "@/stores/wordle-store";
 import { useEffect } from "react"
@@ -89,6 +89,8 @@ export default function WordleProvider({ children }: Props) {
       document.removeEventListener("keydown", handleKeyDown)
     }
   }, [board, currentRow, currentWord, gameState, guess, onBackspace, onDefeat, onTyping, onVictory, updateQwerty])
+
+  seeCwd();
 
   return (children);
 }
