@@ -35,6 +35,7 @@ export default function WordleProvider({ children }: Props) {
   // Listen key events
   useEffect(() => {
     const handleKeyDown = async (e: KeyboardEvent) => {
+      e.preventDefault()
 
       if (gameState === "playing" && guess) {
 
