@@ -8,12 +8,14 @@ export const getWord = async () => {
   const filePath = join(process.cwd(), "src", "app", "words.json")
 
   const productionPath = process.cwd()
-  readdir(productionPath, { withFileTypes: true, recursive: true }, (err, files) => {
+  readdir(productionPath, { withFileTypes: true, recursive: true }, (err, dirents) => {
 
     if (err) {
       console.log({ errInformation: err })
 
     }
+
+    const files = dirents.map(dirent => dirent.name )
 
     console.log({ files })
 
