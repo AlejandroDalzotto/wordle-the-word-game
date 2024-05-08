@@ -3,11 +3,11 @@ import { promises as fs } from 'fs';
 import { join } from 'path';
 import type { Word } from './types';
 
+const wordsPath = join(process.cwd(), "words.json").toLowerCase()
+
 export const getWord = async () => {
 
-  const filePath = join(process.cwd(), "words.json")
-
-  const file = await fs.readFile(filePath, 'utf8');
+  const file = await fs.readFile(wordsPath, 'utf8');
   const words: Set<string> = new Set(JSON.parse(file));
 
   const randIndex = Math.floor(Math.random() * words.size);
@@ -21,9 +21,8 @@ export const getWord = async () => {
 }
 
 export const isValidWord = async (word: string) => {
-  const filePath = join(process.cwd(), "words.json")
 
-  const file = await fs.readFile(filePath, 'utf8');
+  const file = await fs.readFile(wordsPath, 'utf8');
   const words: Set<string> = new Set(JSON.parse(file));
 
   return words.has(word);
