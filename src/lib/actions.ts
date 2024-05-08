@@ -3,7 +3,7 @@ import { promises as fs } from 'fs';
 import { join } from 'path';
 import type { Word } from './types';
 
-const wordsPath = join(process.cwd(), "words.json").toLowerCase()
+const wordsPath = join(process.cwd(), "public", "words.json")
 
 export const getWord = async () => {
 
